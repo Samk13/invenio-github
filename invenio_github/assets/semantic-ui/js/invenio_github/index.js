@@ -1,5 +1,6 @@
 // This file is part of InvenioGithub
 // Copyright (C) 2023 CERN.
+// Copyright (C) 2024 KTH Royal Institute of Technology.
 //
 // Invenio Github is free software; you can redistribute it and/or modify it
 // under the terms of the MIT License; see LICENSE file for more details.
@@ -75,7 +76,7 @@ if (sync_button) {
             resultMessage,
             "positive",
             "checkmark",
-            "Repositories synced successfully. Please reload the page."
+            translations.repositories_synced
           );
           sync_button.classList.remove("disabled");
           setTimeout(function () {
@@ -86,7 +87,7 @@ if (sync_button) {
             resultMessage,
             "negative",
             "cancel",
-            `Request failed with status code: ${response.status}`
+            `${translations.request_failed} ${response.status}`
           );
           setTimeout(function () {
             resultMessage.classList.add("hidden");
@@ -100,15 +101,14 @@ if (sync_button) {
             resultMessage,
             "warning",
             "hourglass",
-            "This action seems to take some time, refresh the page after several minutes to inspect the synchronisation."
+            translations.timeout_message
           );
-        }
-        else {
+        } else {
           addResultMessage(
             resultMessage,
             "negative",
             "cancel",
-            `There has been a problem: ${error}`
+            `${translations.problem_occurred} ${error}`
           );
            setTimeout(function () {
             resultMessage.classList.add("hidden");
@@ -158,7 +158,7 @@ function sendEnableDisableRequest(checked, repo) {
           switchMessage,
           "positive",
           "checkmark",
-          "Repository synced successfully. Please reload the page."
+          translations.repo_sync_success
         );
         setTimeout(function () {
           switchMessage.classList.add("hidden");
@@ -168,7 +168,7 @@ function sendEnableDisableRequest(checked, repo) {
           switchMessage,
           "negative",
           "cancel",
-          `Request failed with status code: ${response.status}`
+          `${translations.request_failed} ${response.status}`
         );
         setTimeout(function () {
           switchMessage.classList.add("hidden");
@@ -179,7 +179,7 @@ function sendEnableDisableRequest(checked, repo) {
         switchMessage,
         "negative",
         "cancel",
-        `There has been a problem: ${error}`
+        `${translations.problem_occurred} ${error}`
       );
       setTimeout(function () {
         switchMessage.classList.add("hidden");
